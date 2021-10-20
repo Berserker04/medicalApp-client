@@ -1,10 +1,10 @@
 import axios from "axios";
 
 // PRODUCTION
-const URL_API = "https://mercadeo-virtual-api.herokuapp.com";
+// const URL_API = "https://mercadeo-virtual-api.herokuapp.com";
 
 // DEVELOP
-// const URL_API = "http://localhost:3001";
+const URL_API = "http://127.0.0.1:8000/api";
 
 class AP {
   async GET(link, data = {}, config = {}) {

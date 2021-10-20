@@ -2,17 +2,17 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./styles.css";
 
-import HeaderContainer from "../components/header/HeaderContainer";
 import CheckAuth from "../pages/login/CheckAuth";
 import LoginContainer from "../pages/login/LoginContainer";
 import RegisterContainer from "../pages/login/RegisterContainer";
-// import HomeContainer from "../pages/home/HomeContainer";
-// import UserContainer from "../pages/user/UserContainer";
-// import PublicationContainer from "../pages/publication/PublicationContainer";
-// import ReportContainer from "../pages/report/ReportContainer";
-// import ProfileContainer from "../pages/profile/ProfileContainer";
-// import RoleContainer from "../pages/role/RoleContainer";
 import NoFound from "../pages/noFound";
+import Layout from "../components/layout/Layout";
+import Employees from "../pages/admin/employee/Employee";
+import ScheduleContainer from "../pages/admin/schedule/ScheduleContainer";
+import ProfileContainer from "../pages/admin/profile/ProfileContainer";
+import ProfessionContainer from "../pages/admin/profession/ProfessionContainer";
+import SpecialtyContainer from "../pages/admin/specialty/SpecialtyContainer";
+import HomeContainer from "../pages/admin/home/HomeContainer";
 
 const App = () => (
   <BrowserRouter>
@@ -21,18 +21,24 @@ const App = () => (
       <Route exact path="/login" component={LoginContainer} />
     </Switch>
     <CheckAuth>
-      <div className="dashboard-header">
-        <HeaderContainer />
-        <Switch>
-          {/* <Route exact path="/" component={HomeContainer} />
-          <Route exact path="/usuarios" component={UserContainer} />
-          <Route exact path="/publicaciones" component={PublicationContainer} />
-          <Route exact path="/reportes" component={ReportContainer} />
-          <Route exact path="/roles" component={RoleContainer} />
-          <Route exact path="/perfil" component={ProfileContainer} /> */}
-          <Route component={NoFound} />
-        </Switch>
+      {/* <div className="dashboard-header"> */}
+      <div className="g-sidenav-show  bg-gray-100">
+        <Layout>
+
+          <Switch>
+            <Route exact path="/" component={HomeContainer} />
+            <Route exact path="/empleados" component={Employees} />
+            <Route exact path="/horarios" component={ScheduleContainer} />
+            <Route exact path="/perfil" component={ProfileContainer} />
+            <Route exact path="/profesiones" component={ProfessionContainer} />
+            <Route exact path="/especialidades" component={SpecialtyContainer} />
+            <Route component={NoFound} />
+          </Switch>
+        </Layout>
       </div>
+      {/* <HeaderContainer /> */}
+
+      {/* </div> */}
     </CheckAuth>
   </BrowserRouter>
 );

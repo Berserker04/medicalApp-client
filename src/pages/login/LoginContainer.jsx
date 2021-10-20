@@ -14,7 +14,7 @@ class LoginContainer extends Component {
     this.state = {
       loading: false,
       form: {
-        user_name: "",
+        email: "",
         password: "",
       },
     };
@@ -31,11 +31,12 @@ class LoginContainer extends Component {
 
   singIn = async () => {
     this.setState({ loading: true });
-    await API.POST("/login", this.state.form).then(({ data }) => {
-      if (data.ok) {
-        this.props.setStorage("token", data.body.token);
-        this.props.setUser(data.body.user);
-        this.props.setToken(data.body.token);
+    await API.POST("/auth/login", this.state.form).then(({ data }) => {
+      console.log(data);
+      if (data.access_token) {
+        this.props.setStorage("token", data.access_token);
+        // this.props.setUser(data.body.user);
+        this.props.setToken(data.access_token);
       } else {
         Swal.fire({
           position: "top-end",
@@ -50,7 +51,8 @@ class LoginContainer extends Component {
   };
 
   render() {
-    if (this.props.getToken) {
+    const token = localStorage.getItem("token")
+    if (token) {
       return <Redirect to="/" />;
     }
     return <LoginView onChange={this.onChange} singIn={this.singIn} />;

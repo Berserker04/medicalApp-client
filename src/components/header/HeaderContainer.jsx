@@ -31,7 +31,7 @@ class HeaderContainer extends Component {
           >
             Inicio
           </NavLink>
-          {this.props.getUser.role_id.name === "superUser" && (
+          {/* {this.props.getUser.role_id.name === "superUser" && (
             <NavLink
               className="header-module-desactive"
               activeClassName="header-module-active"
@@ -39,7 +39,7 @@ class HeaderContainer extends Component {
             >
               Gestión de usuario
             </NavLink>
-          )}
+          )} */}
           <NavLink
             className="header-module-desactive"
             activeClassName="header-module-active"
@@ -54,7 +54,7 @@ class HeaderContainer extends Component {
           >
             Reportes
           </NavLink>
-          {this.props.getUser.role_id.name === "superUser" && (
+          {/* {this.props.getUser.role_id.name === "superUser" && (
             <NavLink
               className="header-module-desactive"
               activeClassName="header-module-active"
@@ -62,7 +62,7 @@ class HeaderContainer extends Component {
             >
               Roles
             </NavLink>
-          )}
+          )} */}
           <NavLink
             className="header-module-desactive"
             activeClassName="header-module-active"
