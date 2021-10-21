@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
 import { connect } from "react-redux";
 import Swal from "sweetalert2";
 
 import LoginView from "./LoginView";
 import { API } from "../../api";
-import { Token, setStorage } from "../../redux/actions/services";
+import { Token, setStorage } from "../../redux/actions/auth";
 import { User } from "../../redux/actions/users";
 
 class LoginContainer extends Component {
@@ -32,9 +31,8 @@ class LoginContainer extends Component {
   singIn = async () => {
     this.setState({ loading: true });
     await API.POST("/auth/login", this.state.form).then(({ data }) => {
-      console.log(data);
       if (data.access_token) {
-        this.props.setStorage("token", data.access_token);
+        this.props.setTokenStorage("token", data.access_token);
         // this.props.setUser(data.body.user);
         this.props.setToken(data.access_token);
       } else {
@@ -51,9 +49,8 @@ class LoginContainer extends Component {
   };
 
   render() {
-    const token = localStorage.getItem("token")
-    if (token) {
-      return <Redirect to="/" />;
+    if (this.props.getToken) {
+      window.location.href = "/"
     }
     return <LoginView onChange={this.onChange} singIn={this.singIn} />;
   }
@@ -61,7 +58,7 @@ class LoginContainer extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    getToken: state.serviceReducer.token,
+    getToken: state.authReducer.token,
   };
 };
 
@@ -69,7 +66,7 @@ const mapDispatchToProps = (Dispatch) => {
   return {
     setToken: (newToken) => Dispatch(Token(newToken)),
     setUser: (user) => Dispatch(User(user)),
-    setStorage: (key, value) => setStorage(key, value),
+    setTokenStorage: (key, value) => Dispatch(setStorage(key, value)),
   };
 };
 

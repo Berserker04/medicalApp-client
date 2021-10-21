@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 // import logo from "../../assets/images/logo.png";
 import Logo from '../../assets/img/logos/MedicalApp.png'
@@ -79,7 +78,7 @@ const LogiView = ({
                     <p className="mb-0">Ingrese su correo electrónico y contraseña para iniciar sesión</p>
                   </div>
                   <div className="card-body">
-                    <form role="form">
+                    <form>
                       <label>Correo eléctronico</label>
                       <div className="mb-3">
                         <input

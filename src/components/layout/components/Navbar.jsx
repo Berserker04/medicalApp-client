@@ -15,18 +15,18 @@ const Navbar = () => {
                         <ul className="navbar-nav  justify-content-end">
                             <li className="nav-item d-flex align-items-center">
                                 <a  href="/login" className="" onClick={() => localStorage.removeItem("token")}>
-                                    <i class="fas fa-sign-in-alt me-sm-1" aria-hidden="true"></i>
+                                    <i className="fas fa-sign-in-alt me-sm-1" aria-hidden="true"></i>
                                     <span className="d-sm-inline d-none">Salir</span>
                                 </a>
                             </li>
                             <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
-                                <a href="javascript:;" className="nav-link text-body p-0" id="iconNavbarSidenav">
+                                <div className="nav-link text-body p-0" id="iconNavbarSidenav">
                                     <div className="sidenav-toggler-inner">
                                         <i className="sidenav-toggler-line"></i>
                                         <i className="sidenav-toggler-line"></i>
                                         <i className="sidenav-toggler-line"></i>
                                     </div>
-                                </a>
+                                </div>
                             </li>
                         </ul>
                     </div>
