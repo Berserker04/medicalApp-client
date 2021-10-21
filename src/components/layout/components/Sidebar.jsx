@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <>
       <aside
-        className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
+        className="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps"
         id="sidenav-main"
       >
         <div className="sidenav-header">

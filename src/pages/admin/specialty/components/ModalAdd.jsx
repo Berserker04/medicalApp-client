@@ -40,8 +40,8 @@ export default function ModalAddSpecialty({
                   value={form.name}
                   onChange={({ target }) => setState(target)}
                 /> */}
-                <select className="form-control" name="profession_id" id="">
-                  <option value="0">Seleccionar</option>
+                <select className="form-control" name="profession_id" onChange={({ target }) => setState(target)}>
+                  <option value="0" disabled selected>Seleccionar</option>
                   {professions.map((p) => (
                     <option ke={p.id} value={p.id}>
                       {p.name}

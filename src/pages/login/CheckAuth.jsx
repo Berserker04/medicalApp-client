@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { API } from "../../api";
 import { connect } from "react-redux";
 import { Token, delStorage, refreshHeader } from "../../redux/actions/auth";
-import { User } from "../../redux/actions/users";
+import { getUser, Me } from "../../redux/actions/users";
 import { Redirect } from "react-router";
 import Logo from "../../assets/img/logos/MedicalApp.png";
 
@@ -28,16 +28,14 @@ class CheckAuth extends Component {
             authorization: `bearer ${token}`,
           },
         };
-        await API.POST("/auth/me", {}, config).then(({ data }) => {
+        await API.POST("/auth/me", {}, config).then(async ({ data }) => {
           if (!data.id) {
             this.props.delStorage("token");
           } else {
-            this.props.setUser(data);
-            // alert(token)
+            await this.props.setMe(data);
+            await this.props.setUser(data, config);
             this.props.setHeader(token);
-            setTimeout(() => {
-              this.setState({ isCheck: true });
-            }, 500);
+            this.setState({ isCheck: true });
           }
         });
       } catch (error) {
@@ -83,7 +81,8 @@ const mapStateToProps = (reducers) => {
 const mapDispatchToProps = (Dispatch) => {
   return {
     setToken: (newToken) => Dispatch(Token(newToken)),
-    setUser: (user) => Dispatch(User(user)),
+    setMe: (user) => Dispatch(Me(user)),
+    setUser: (me, header) =>  Dispatch(getUser(me, header)),
     delStorage: (key) => Dispatch(delStorage(key)),
     setHeader: (token) => Dispatch(refreshHeader(token)),
   };

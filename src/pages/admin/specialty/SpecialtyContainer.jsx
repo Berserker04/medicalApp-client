@@ -34,9 +34,10 @@ export default function SpecialtyContainer() {
   const { professions } = useSelector((state) => state.profession);
 
   const [form, setForm] = useState({
-    id: "",
-    name: "",
-  });
+    id:"",
+    name : "",
+    profession_id: ""
+});
 
   const getData = useCallback(async () => {
     await dispatch(listSpecialties(header));

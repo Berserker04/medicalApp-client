@@ -18,6 +18,7 @@ import {
   
   export const listSpecialties = (header) => async (dispatch) => {
     try {
+      console.log(header, " elheader");
       const specialties = await ListSpecialty(header);
       dispatch(Specialties(specialties));
       dispatch(SpecialtiesFilter(specialties));

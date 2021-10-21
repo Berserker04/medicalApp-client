@@ -50,8 +50,9 @@ export default function ProfessionContainer() {
     getData();
   }, [getData]);
 
-  const setItem = (item) => {
-    setForm(item);
+  const setItem = async(item) => {
+    await reset();
+    setForm({...item});
   };
 
   const setState = ({ name, value }) => {
@@ -70,7 +71,6 @@ export default function ProfessionContainer() {
 
   const save = async () => {
     let isOk = false;
-    console.log(form);
     isOk = await dispatch(registerProfession(form, header));
     if (isOk) reset();
   };

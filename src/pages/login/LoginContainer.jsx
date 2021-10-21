@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import LoginView from "./LoginView";
 import { API } from "../../api";
 import { Token, setStorage } from "../../redux/actions/auth";
-import { User } from "../../redux/actions/users";
+import { Me } from "../../redux/actions/users";
 
 class LoginContainer extends Component {
   constructor(props) {
@@ -65,7 +65,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (Dispatch) => {
   return {
     setToken: (newToken) => Dispatch(Token(newToken)),
-    setUser: (user) => Dispatch(User(user)),
+    setUser: (user) => Dispatch(Me(user)),
     setTokenStorage: (key, value) => Dispatch(setStorage(key, value)),
   };
 };

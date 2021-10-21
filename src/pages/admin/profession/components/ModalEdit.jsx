@@ -32,6 +32,7 @@ export default function ModalEditProfesion({ form, setState, update }) {
                   className="form-control"
                   id="recipient-name"
                   name="name"
+                  placeholder="Ingresa la profesión"
                   value={form.name}
                   onChange={({ target }) => setState(target)}
                 />
