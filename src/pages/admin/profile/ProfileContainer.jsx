@@ -28,7 +28,6 @@ export default function ProfileContainer() {
 
     const getData = useCallback(
         async () => {
-            console.log(header);
             dispatch(listSpecialties(header));
             dispatch(listProfessions(header));
             setForm(user)

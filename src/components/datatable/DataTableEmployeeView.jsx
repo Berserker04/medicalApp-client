@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DataTableView({
+export default function DataTableEmployeeView({
   headCells,
   data = [],
   setItem,
@@ -45,16 +45,28 @@ export default function DataTableView({
                   {data.map((d) => (
                     <tr>
                       <td>
-                        <p>{d.name}</p>
-                      </td>
-                      <td></td>
-                      <td></td>
-                      {d.profession && (
-                        <td>
-                          <p>{d.profession.name}</p>
-                        </td>
-                      )}
+                        {/* <p>{d.employee.image}</p> */}
 
+                        <div className="d-flex px-2 py-1">
+                          <div>
+                            <img src="../assets/img/team-2.jpg" className="avatar avatar-sm me-3" alt="user1" />
+                          </div>
+                          <div className="d-flex flex-column justify-content-center">
+                            <h6 className="mb-0 text-sm">{`${d.employee.firstName} ${d.employee.lastName}`}</h6>
+                            <p className="text-xs text-secondary mb-0">{d.email}</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <p className="text-xs font-weight-bold mb-0">{d.employee.specialty.profession.name}</p>
+                        <p className="text-xs text-secondary mb-0">{d.employee.specialty.name}</p>
+                      </td>
+                      <td>
+                        <p className="text-xs font-weight-bold mb-0">{d.employee.document}</p>
+                      </td>
+                      <td>
+                        <p className="text-xs font-weight-bold mb-0">{d.employee.cellPhone}</p>
+                      </td>
                       <td className="align-middle text-center text-sm">
                         <button
                           type="button"
@@ -73,8 +85,6 @@ export default function DataTableView({
                           </span>
                         </button>
                       </td>
-                      <td></td>
-                      <td></td>
                       <td className="align-middle">
                         <button
                           type="button"

@@ -1,44 +1,45 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { listProfessions } from "../../../redux/actions/profession";
+import { listSpecialties } from "../../../redux/actions/specialty";
 import {
-  changeStateProfession,
-  listProfessions,
-  ProfessionsFilter,
-  registerProfession,
-  updateProfession,
-} from "../../../redux/actions/profession";
-import ProfessionView from "./ProfessionView";
+  changeStateUser,
+  listUsers,
+  UsersFilter,
+  registerUser,
+  updateUser,
+} from "../../../redux/actions/users";
+import EmployeeView from "./EmployeeView";
 
 const headCells = [
   {
-    label: "Profesión",
+    label: "Nombres",
   },
   {
-    label: ""
+    label: "Cargo",
   },
   {
-    label: ""
+    label: "Documento",
+  },
+  {
+    label: "Celular",
   },
   {
     label: "Estado",
-  },
-  {
-    label: ""
-  },
-  {
-    label: ""
   },
   {
     label: "Acciones",
   },
 ];
 
-export default function ProfessionContainer() {
+export default function EmployeeContainer() {
   const dispatch = useDispatch();
   const { header } = useSelector((state) => state.authReducer);
-  const { professions, professionsFilter } = useSelector(
-    (state) => state.profession
+  const { users, usersFilter } = useSelector(
+    (state) => state.user
   );
+  const { specialties } = useSelector((state) => state.specialty)
+  const { professions } = useSelector((state) => state.profession);
 
   const [form, setForm] = useState({
     id: "",
@@ -46,7 +47,9 @@ export default function ProfessionContainer() {
   });
 
   const getData = useCallback(async () => {
-    await dispatch(listProfessions(header));
+    await dispatch(listUsers(header));
+    dispatch(listSpecialties(header));
+    dispatch(listProfessions(header));
   }, [dispatch, header]);
 
   useEffect(() => {
@@ -58,14 +61,14 @@ export default function ProfessionContainer() {
     setForm({ ...item });
   };
 
-  const setState = ({ name, value }) => {
+  const formChange = ({ name, value }) => {
     setForm({ ...form, [name]: value });
   };
 
   const changeFilter = ({ value }) => {
     dispatch(
-      ProfessionsFilter(
-        professions.filter((p) =>
+      UsersFilter(
+        users.filter((p) =>
           p.name.toLowerCase().includes(value.toLowerCase())
         )
       )
@@ -74,18 +77,18 @@ export default function ProfessionContainer() {
 
   const save = async () => {
     let isOk = false;
-    isOk = await dispatch(registerProfession(form, header));
+    isOk = await dispatch(registerUser(form, header));
     if (isOk) reset();
   };
 
   const update = async () => {
     let isOk = false;
-    isOk = await dispatch(updateProfession(form, header));
+    isOk = await dispatch(updateUser(form, header));
     if (isOk) reset();
   };
 
   const changeState = async (item) => {
-    await dispatch(changeStateProfession(item, header));
+    await dispatch(changeStateUser(item, header));
   };
 
   const reset = () => {
@@ -101,16 +104,18 @@ export default function ProfessionContainer() {
 
   return (
     <div>
-      <ProfessionView
-        professions={professionsFilter}
+      <EmployeeView
+        users={usersFilter}
         headCells={headCells}
         setItem={setItem}
         form={form}
-        setState={setState}
+        formChange={formChange}
         save={() => save()}
         update={() => update()}
         changeFilter={changeFilter}
         changeState={changeState}
+        specialties={specialties}
+        professions={professions}
       />
     </div>
   );

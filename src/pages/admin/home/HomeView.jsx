@@ -77,52 +77,7 @@ export default function HomeView() {
           </div>
         </div>
       </div>
-      <div className="row mt-5">
-        <div className="col-lg-4">
-          <div className="d-flex flex-column h-100">
-            <p className="mb-1 pt-2 text-bold">Built by developers</p>
-            <h5 className="font-weight-bolder">Soft UI Dashboard</h5>
-            <p className="mb-5">
-              From colors, cards, typography to complex elements, you will find
-              the full documentation.
-            </p>
-          </div>
-        </div>
-        <div className="col-lg-4 ms-auto text-center mt-5 mt-lg-0">
-          <div className="bg-gradient-primary border-radius-lg h-100">
-            <img
-              src="../assets/img/shapes/waves-white.svg"
-              className="position-absolute h-100 w-50 top-0 d-lg-block d-none"
-              alt="waves"
-            />
-            <div className="position-relative d-flex align-items-center justify-content-center h-100">
-              <img
-                className="w-100 position-relative z-index-2 pt-4"
-                src="../assets/img/illustrations/rocket-white.png"
-                alt="rocket"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <table id="table" className="display">
-        <thead>
-          <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Row 1 Data 1</td>
-            <td>Row 1 Data 2</td>
-          </tr>
-          <tr>
-            <td>Row 2 Data 1</td>
-            <td>Row 2 Data 2</td>
-          </tr>
-        </tbody>
-      </table>
+    
     </>
   );
 }

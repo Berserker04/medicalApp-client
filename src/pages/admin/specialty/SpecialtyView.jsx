@@ -39,6 +39,7 @@ export default function SpecialtyView({
           <div className="card-body px-0 pt-0 pb-2">
             <div className="table-responsive p-0 d-flex justify-content-center">
               <DataTableView
+              title="especialidades"
                 data={specialties}
                 headCells={headCells}
                 setItem={setItem}
