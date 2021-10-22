@@ -22,16 +22,19 @@ const App = () => (
     </Switch>
     <CheckAuth>
       {/* <div className="dashboard-header"> */}
-      <div className="g-sidenav-show  bg-gray-100">
+      <div id="body-id" className="g-sidenav-show  bg-gray-100">
         <Layout>
-
           <Switch>
             <Route exact path="/" component={HomeContainer} />
             <Route exact path="/empleados" component={EmployeeContainer} />
             <Route exact path="/horarios" component={ScheduleContainer} />
             <Route exact path="/perfil" component={ProfileContainer} />
             <Route exact path="/profesiones" component={ProfessionContainer} />
-            <Route exact path="/especialidades" component={SpecialtyContainer} />
+            <Route
+              exact
+              path="/especialidades"
+              component={SpecialtyContainer}
+            />
             <Route component={NoFound} />
           </Switch>
         </Layout>

@@ -29,7 +29,7 @@ export default function EmployeeView({
                                     type="button"
                                     className="btn btn-success"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#addProfession"
+                                    data-bs-target="#addEmployee"
                                     onClick={() => setItem({ isNew: true })}
                                 >
                                     <i className="fas fa-plus"></i> Agregar medico

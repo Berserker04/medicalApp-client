@@ -32,12 +32,12 @@ export default function SpecialtyContainer() {
     (state) => state.specialty
   );
   const { professions } = useSelector((state) => state.profession);
-
+  const { user } = useSelector((state) => state.user);
   const [form, setForm] = useState({
-    id:"",
-    name : "",
-    profession_id: ""
-});
+    id: "",
+    name: "",
+    profession_id: "",
+  });
 
   const getData = useCallback(async () => {
     await dispatch(listSpecialties(header));
@@ -93,6 +93,9 @@ export default function SpecialtyContainer() {
       btnClose[i].click();
     }
   };
+
+  if (user.role_id !== 1)
+    return <h1>No tienes permisos para ver esta pagina</h1>;
 
   return (
     <div>

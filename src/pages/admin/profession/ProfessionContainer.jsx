@@ -14,19 +14,19 @@ const headCells = [
     label: "Profesión",
   },
   {
-    label: ""
+    label: "",
   },
   {
-    label: ""
+    label: "",
   },
   {
     label: "Estado",
   },
   {
-    label: ""
+    label: "",
   },
   {
-    label: ""
+    label: "",
   },
   {
     label: "Acciones",
@@ -39,6 +39,8 @@ export default function ProfessionContainer() {
   const { professions, professionsFilter } = useSelector(
     (state) => state.profession
   );
+
+  const { user } = useSelector((state) => state.user);
 
   const [form, setForm] = useState({
     id: "",
@@ -98,6 +100,9 @@ export default function ProfessionContainer() {
       btnClose[i].click();
     }
   };
+
+  if (user.role_id !== 1)
+    return <h1>No tienes permisos para ver esta pagina</h1>;
 
   return (
     <div>

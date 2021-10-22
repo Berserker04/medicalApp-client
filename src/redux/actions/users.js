@@ -40,7 +40,7 @@ export const listUsers = (header) => async (dispatch) => {
 export const getUser = (item, header) => async (dispatch) => {
   try {
     const user = await GetUser(item, header);
-    console.log(user, " ###")
+    console.log(user, " ###");
     await dispatch(User({ ...user, ...user.employee }));
   } catch (error) {
     console.log(error);
@@ -49,11 +49,13 @@ export const getUser = (item, header) => async (dispatch) => {
 
 export const updateUser = (item, header) => async (dispatch) => {
   try {
-
     console.log(item, " LO QUE VA A ENVIAR");
 
     let isOk = await UpdateUser(item, header);
-    if (isOk) dispatch(listUsers(header));
+    if (isOk) {
+      dispatch(listUsers(header));
+      dispatch(getUser(item, header));
+    }
     return isOk;
   } catch (error) {
     console.log(error);
