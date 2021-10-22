@@ -24,8 +24,10 @@ export default function ModalAddTurn({
   form,
   formChange,
   save,
-  professions,
-  specialties,
+  employees,
+  turns,
+  deleteData,
+  newData,specialties
 }) {
   return (
     <div
@@ -38,7 +40,7 @@ export default function ModalAddTurn({
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              Genrar turnos
+              Generar turnos
             </h5>
             <button
               type="button"
@@ -97,12 +99,12 @@ export default function ModalAddTurn({
                 </div>
                 <div className="row mt-3">
                   <div className="col">
-                    <label htmlFor="">Total de clientes</label>
+                    <label htmlFor="">Total de medicos</label>
                     <input
                       onChange={({ target }) => formChange(target)}
                       name="email"
                       type="email"
-                      value={0}
+                      value={employees.length}
                       className="form-control"
                       placeholder="Email"
                       aria-label="Email"
@@ -136,53 +138,82 @@ export default function ModalAddTurn({
                 <hr className="horizontal  mt-0" />
                 <hr className="horizontal dark mt-0" />
                 <hr className="horizontal  mt-0" />
-                <div className="row mt-3">
-                  <div className="col">
-                    <label htmlFor="">Cantidad de pacientes</label>
-                    <input
-                      onChange={({ target }) => formChange(target)}
-                      name="email"
-                      type="number"
-                      // value={""}
-                      className="form-control"
-                      placeholder="Total pacientes"
-                      aria-label="Email"
-                      aria-describedby="email-addon"
-                    />
-                  </div>
-                  <div className="col">
-                    <label htmlFor="">Horas estimadas</label>
-                    <input
-                      onChange={({ target }) => formChange(target)}
-                      name="email"
-                      type="number"
-                      // value={""}
-                      className="form-control"
-                      placeholder="Total horas"
-                      aria-label="Email"
-                      aria-describedby="email-addon"
-                    />
-                  </div>
-                </div>
-                <div className="row mt-3">
-                  <div className="col">
-                    <label htmlFor="">Categoria del paciente</label>
-                    <select
-                      name="profession_id"
-                      onChange={({ target }) => formChange(target)}
-                      name="profession_id"
-                      className="form-control"
-                    >
-                      <option value="0" disabled selected>
-                        Seleccionar categoria
-                      </option>
-                      {categories.map((e) => (
-                        <option key={e.id} value={e.id}>
-                          {e.name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                {
+                  turns.map((t, i) => (
+                    <div className="card" style={{ padding: 20, marginBottom: 10, backgroundColor: "#00000020" }}>
+                      {
+                        (turns.length > 1) && (
+                          <div style={{ display: "flex", justifyContent: "end" }}>
+                            <button
+                              type="button"
+                              className="btn btn-danger "
+                              onClick={() => deleteData(i)}
+                            >
+                              <i class="fas fa-times"></i>
+                            </button>
+                          </div>
+                        )
+                      }
+                      <div className="row mt-3">
+                        <div className="col">
+                          <label htmlFor="">Cantidad de pacientes</label>
+                          <input
+                            onChange={({ target }) => formChange(target)}
+                            name="email"
+                            type="number"
+                            // value={""}
+                            className="form-control"
+                            placeholder="Total pacientes"
+                            aria-label="Email"
+                            aria-describedby="email-addon"
+                          />
+                        </div>
+                        <div className="col">
+                          <label htmlFor="">Horas estimadas</label>
+                          <input
+                            onChange={({ target }) => formChange(target)}
+                            name="email"
+                            type="number"
+                            // value={""}
+                            className="form-control"
+                            placeholder="Total horas"
+                            aria-label="Email"
+                            aria-describedby="email-addon"
+                          />
+                        </div>
+                      </div>
+                      <div className="row mt-3">
+                        <div className="col">
+                          <label htmlFor="">Categoria del paciente</label>
+                          <select
+                            name="profession_id"
+                            onChange={({ target }) => formChange(target)}
+                            name="profession_id"
+                            className="form-control"
+                          >
+                            <option value="0" disabled selected>
+                              Seleccionar especialidad
+                            </option>
+                            {specialties.map((e) => (
+                              <option key={e.id} value={e.id}>
+                                {e.name}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  ))
+                }
+
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <button
+                    type="button"
+                    className="btn btn-success "
+                    onClick={() => newData()}
+                  >
+                    <i className="fas fa-plus"></i>
+                  </button>
                 </div>
 
                 <div className="mb-3">
@@ -198,7 +229,7 @@ export default function ModalAddTurn({
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }

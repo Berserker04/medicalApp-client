@@ -2,7 +2,7 @@ import React from "react";
 import { URL_IMAGE } from "../../api";
 import "./styles.css"
 
-export default function DataTableHomeView({
+export default function DataTableTurnOneView({
   headCells,
   data = [],
   setItem,
@@ -12,6 +12,7 @@ export default function DataTableHomeView({
   changeState,
   title,
 }) {
+  if (data.length) data = [data[0]]
   return (
     <div className="row">
       <div className="col-12">
@@ -45,23 +46,19 @@ export default function DataTableHomeView({
                 <tbody>
                   {data.map((d, i) => (
                     <tr>
-                      <td className="text-center">{i + 12} pm</td>
+                      <td className="text-center">{i + 1}</td>
                       <td>
-                        <div className="d-flex px-2 py-1">
-                          
-                        </div>
                         <div className="d-flex px-2 py-1">
                           <div>
                             <img
-                              
+
                               data-bs-toggle="modal"
                               data-bs-target="#editProfession"
                               onClick={() => setItem({ ...d, ...d.employee })}
-                              src={`${
-                                d.employee.image
+                              src={`${d.employee.image
                                   ? URL_IMAGE + d.employee.image
                                   : "../assets/img/profile.jpg"
-                              }`}
+                                }`}
                               className="avatar avatar-sm me-3 iconTurn"
                               alt="user1"
                             />
@@ -73,18 +70,19 @@ export default function DataTableHomeView({
                         </div>
                       </td>
                       <td>
+                      </td>
+                      <td>
                         <div className="d-flex px-2 py-1">
                           <div>
                             <img
-                              
+
                               data-bs-toggle="modal"
                               data-bs-target="#editProfession"
                               onClick={() => setItem({ ...d, ...d.employee })}
-                              src={`${
-                                d.employee.image
+                              src={`${d.employee.image
                                   ? URL_IMAGE + d.employee.image
                                   : "../assets/img/profile.jpg"
-                              }`}
+                                }`}
                               className="avatar avatar-sm me-3 iconTurn"
                               alt="user1"
                             />
@@ -100,15 +98,14 @@ export default function DataTableHomeView({
                         <div className="d-flex px-2 py-1">
                           <div>
                             <img
-                              
+
                               data-bs-toggle="modal"
                               data-bs-target="#editProfession"
                               onClick={() => setItem({ ...d, ...d.employee })}
-                              src={`${
-                                d.employee.image
+                              src={`${d.employee.image
                                   ? URL_IMAGE + d.employee.image
                                   : "../assets/img/profile.jpg"
-                              }`}
+                                }`}
                               className="avatar avatar-sm me-3 iconTurn"
                               alt="user1"
                             />
@@ -119,43 +116,19 @@ export default function DataTableHomeView({
                         </div>
                       </td>
                       <td>
-                        <div className="d-flex px-2 py-1">
-                          <div>
-                            <img
-                              
-                              data-bs-toggle="modal"
-                              data-bs-target="#editProfession"
-                              onClick={() => setItem({ ...d, ...d.employee })}
-                              src={`${
-                                d.employee.image
-                                  ? URL_IMAGE + d.employee.image
-                                  : "../assets/img/profile.jpg"
-                              }`}
-                              className="avatar avatar-sm me-3 iconTurn"
-                              alt="user1"
-                            />
-                          </div>
-                          <div className="d-flex flex-column justify-content-center">
-                            <h6 className="mb-0 text-sm">{`${d.employee.firstName} ${d.employee.lastName}`}</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                       
                       </td>
                       <td>
                         <div className="d-flex px-2 py-1">
                           <div>
                             <img
-                              
+
                               data-bs-toggle="modal"
                               data-bs-target="#editProfession"
                               onClick={() => setItem({ ...d, ...d.employee })}
-                              src={`${
-                                d.employee.image
+                              src={`${d.employee.image
                                   ? URL_IMAGE + d.employee.image
                                   : "../assets/img/profile.jpg"
-                              }`}
+                                }`}
                               className="avatar avatar-sm me-3 iconTurn"
                               alt="user1"
                             />

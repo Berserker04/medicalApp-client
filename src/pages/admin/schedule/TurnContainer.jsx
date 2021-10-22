@@ -66,6 +66,12 @@ export default function TurnContainer() {
   const { user } = useSelector((state) => state.user);
   const [form, setForm] = useState(initialState);
 
+  const [turns, setTurns] = useState([{
+    totalTimeByType: "",
+    totalPatientsByType: "",
+    categoryPatient: "",
+  }])
+
   const getData = useCallback(async () => {
     await dispatch(listUsers(header));
     dispatch(listSpecialties(header));
@@ -170,12 +176,26 @@ export default function TurnContainer() {
     }
   };
 
-  if (user.role_id !== 1)
-    return <h1>No tienes permisos para ver esta pagina</h1>;
+  const newData = async() => {
+    await turns.push({
+      totalTimeByType: "",
+      totalPatientsByType: "",
+      categoryPatient: "",
+    })
+    setTurns([...turns])
+  }
+
+  const deleteData = async(pos) => {
+    await turns.splice(pos, 1)
+    setTurns([...turns])
+  }
+
+  
 
   return (
     <div>
       <TurnView
+        user={user}
         users={usersFilter}
         headCells={headCells}
         setItem={setItem}
@@ -187,6 +207,9 @@ export default function TurnContainer() {
         changeState={changeState}
         specialties={specialties}
         professions={professions}
+        turns={turns}
+        newData={newData}
+        deleteData={deleteData}
       />
     </div>
   );

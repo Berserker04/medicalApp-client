@@ -49,12 +49,10 @@ export const getUser = (item, header) => async (dispatch) => {
 
 export const updateUser = (item, header) => async (dispatch) => {
   try {
-    console.log(item, " LO QUE VA A ENVIAR");
-
     let isOk = await UpdateUser(item, header);
     if (isOk) {
       dispatch(listUsers(header));
-      dispatch(getUser(item, header));
+      // dispatch(getUser(item, header));
     }
     return isOk;
   } catch (error) {

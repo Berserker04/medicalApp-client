@@ -9,6 +9,7 @@ export default function HomeView({
   headCells,
   setItem,
 }) {
+  if (users.length) users = [users[0]]
   return (
     <>
       <div className="row">
@@ -160,11 +161,10 @@ export default function HomeView({
                     <img
                       class="h-80 w-80 position-relative z-index-2"
                       style={{ borderRadius: 10 }}
-                      src={`${
-                        user.employee.image
-                          ? URL_IMAGE + user.employee.image
-                          : "../assets/img/profile.jpg"
-                      }`}
+                      src={`${user.employee.image
+                        ? URL_IMAGE + user.employee.image
+                        : "../assets/img/profile.jpg"
+                        }`}
                       alt="rocket"
                     />
                   </div>
@@ -200,17 +200,21 @@ export default function HomeView({
           </div>
         </div>
       </div>
-      <div class="row mt-4">
-        <DataTableHomeView
-          title="Turnos de la semana"
-          data={users}
-          headCells={headCells}
-          setItem={()=>null}
-          changeFilter={[]}
-          changeState={[]}
-          // week="Semana 1"
-        />
-      </div>
+      {
+        user.role_id != 1 && (
+          <div class="row mt-4">
+            <DataTableHomeView
+              title="Turnos de la semana"
+              data={users}
+              headCells={headCells}
+              setItem={() => null}
+              changeFilter={[]}
+              changeState={[]}
+            // week="Semana 1"
+            />
+          </div>
+        )
+      }
     </>
   );
 }

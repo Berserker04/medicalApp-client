@@ -51,6 +51,7 @@ export default function ProfileContainer() {
     };
 
     isOk = await dispatch(updateUser(form, header));
+    dispatch(getUser(user, header));
     setTimeout(() => {
       //   window.location.href = "/";
       setUpdateFinish(true);

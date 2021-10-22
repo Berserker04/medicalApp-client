@@ -8,7 +8,7 @@ export default function ModalEditTurn({
   professions,
   specialties,
 }) {
-
+console.log(form, "JODER");
   return (
     <div
       className="modal fade"
@@ -132,9 +132,9 @@ export default function ModalEditTurn({
                       onChange={({ target }) => formChange(target)}
                       name="cellPhone"
                       type="text"
-                      // value={form.specialty.profession.name}
+                      value={form.specialty?.profession.name}
                       className="form-control"
-                      placeholder="Telefono"
+                      placeholder="Especialidad"
                       aria-label="Email"
                       aria-describedby="email-addon"
                       disabled
@@ -146,9 +146,9 @@ export default function ModalEditTurn({
                       onChange={({ target }) => formChange(target)}
                       name="cellPhone"
                       type="text"
-                      // value={form.specialty.name}
+                      value={form.specialty?.name}
                       className="form-control"
-                      placeholder="Telefono"
+                      placeholder="Especialidad"
                       aria-label="Email"
                       aria-describedby="email-addon"
                       disabled

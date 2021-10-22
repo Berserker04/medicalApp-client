@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
                   <div class="copyright text-center text-sm text-muted text-lg-start">
                     Copyright ©{" "}
                     <script>document.write(new Date().getFullYear())</script>,
-                    creado en SENASOFT <i class="fa fa-heart"></i> by Tean Juan
+                    creado en SENASOFT <i class="fa fa-heart"></i> by Team Juan
                     David
                     {/* <a
                       href="https://www.creative-tim.com"
