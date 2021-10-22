@@ -1,9 +1,10 @@
 import React from "react";
 import DataTableEmployeeView from "../../../components/datatable/DataTableEmployeeView";
+import DataTableTurnView from "../../../components/datatable/DataTableTurnView";
 import ModalAddProfesion from "./components/ModalAdd";
 import ModalEditProfesion from "./components/ModalEdit";
 
-export default function EmployeeView({
+export default function TurnView({
     users,
     headCells,
     setItem,
@@ -29,7 +30,7 @@ export default function EmployeeView({
                                     type="button"
                                     className="btn btn-success"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#addEmployee"
+                                    data-bs-target="#addTurn"
                                     onClick={() => setItem({ isNew: true })}
                                 >
                                     <i className="fas fa-plus"></i> Agregar medico
@@ -40,13 +41,41 @@ export default function EmployeeView({
                     </div>
                     <div className="card-body px-0 pt-0 pb-2 row justify-content-center">
                         <div className="table-responsive col-md-12 col-md-8 col-lg-10">
-                            <DataTableEmployeeView
-                                title="empleados"
+                            <DataTableTurnView
+                                title="Semana 1"
                                 data={users}
                                 headCells={headCells}
                                 setItem={setItem}
                                 changeFilter={changeFilter}
                                 changeState={changeState}
+                                // week="Semana 1"
+                            />
+                            <DataTableTurnView
+                                title="Semana 2"
+                                data={users}
+                                headCells={headCells}
+                                setItem={setItem}
+                                changeFilter={changeFilter}
+                                changeState={changeState}
+                                // week="Semana 1"
+                            />
+                            <DataTableTurnView
+                                title="Semana 3"
+                                data={users}
+                                headCells={headCells}
+                                setItem={setItem}
+                                changeFilter={changeFilter}
+                                changeState={changeState}
+                                // week="Semana 1"
+                            />
+                            <DataTableTurnView
+                                title="Semana 4"
+                                data={users}
+                                headCells={headCells}
+                                setItem={setItem}
+                                changeFilter={changeFilter}
+                                changeState={changeState}
+                                // week="Semana 1"
                             />
                             <ModalEditProfesion
                                 professions={professions}

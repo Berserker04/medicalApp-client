@@ -68,7 +68,7 @@ const Sidebar = () => {
                     style={{ fontSize: 20, color: "#000" }}
                   ></i>
                 </div>
-                <span className="nav-link-text ms-1">Horaios</span>
+                <span className="nav-link-text ms-1">Turnos</span>
               </NavLink>
             </li>
             {user.role_id === 1 && (

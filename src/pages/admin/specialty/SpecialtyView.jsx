@@ -36,8 +36,8 @@ export default function SpecialtyView({
               <div className="col-md-3"></div>
             </div>
           </div>
-          <div className="card-body px-0 pt-0 pb-2">
-            <div className="table-responsive p-0 d-flex justify-content-center">
+          <div className="card-body px-0 pt-0 pb-2 row justify-content-center">
+            <div className="table-responsive col-md-12 col-md-8 col-lg-10">
               <DataTableView
               title="especialidades"
                 data={specialties}

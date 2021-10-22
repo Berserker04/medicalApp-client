@@ -14,19 +14,7 @@ const headCells = [
     label: "Profesión",
   },
   {
-    label: "",
-  },
-  {
-    label: "",
-  },
-  {
     label: "Estado",
-  },
-  {
-    label: "",
-  },
-  {
-    label: "",
   },
   {
     label: "Acciones",

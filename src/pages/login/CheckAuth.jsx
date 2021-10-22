@@ -64,7 +64,7 @@ class CheckAuth extends Component {
           <h1>Cargando...</h1>
         </div>
       );
-    } else if (this.state.isCheck || this.props.getToken) {
+    } else if (this.state.isCheck) {
       return this.props.children;
     }
 

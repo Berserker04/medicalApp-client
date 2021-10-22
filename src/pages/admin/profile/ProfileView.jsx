@@ -154,7 +154,7 @@ export default function ProfileView({
                         <option
                           key={e.id}
                           value={e.id}
-                          selected={e.id == form.specialty_id ? true : false}
+                          selected={e.id === form.specialty_id ? true : false}
                         >
                           {e.name}
                         </option>
@@ -208,7 +208,7 @@ export default function ProfileView({
                 onClick={() => update()}
                 className="btn bg-gradient-dark w-100 my-4 mb-2"
               >
-                Actulizar perfil
+                Actulizar
               </button>
             </div>
           </form>

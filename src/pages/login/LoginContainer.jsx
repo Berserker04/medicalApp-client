@@ -49,7 +49,7 @@ class LoginContainer extends Component {
   };
 
   render() {
-    if (this.props.getToken) {
+    if (this.props.getToken) { 
       window.location.href = "/"
     }
     return <LoginView loading={this.state.loading} onChange={this.onChange} singIn={this.singIn} />;

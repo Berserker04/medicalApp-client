@@ -1,7 +1,14 @@
 import React from "react";
 import { URL_IMAGE } from "../../../api";
+import DataTableHomeView from "../../../components/datatable/DataTableHomeView";
 
-export default function HomeView({ user, stadistics }) {
+export default function HomeView({
+  user,
+  stadistics,
+  users,
+  headCells,
+  setItem,
+}) {
   return (
     <>
       <div className="row">
@@ -14,7 +21,9 @@ export default function HomeView({ user, stadistics }) {
                     <p className="text-sm mb-0 text-capitalize font-weight-bold">
                       Empleados
                     </p>
-                    <h5 className="font-weight-bolder mb-0">{stadistics.employees}</h5>
+                    <h5 className="font-weight-bolder mb-0">
+                      {stadistics.employees}
+                    </h5>
                   </div>
                 </div>
                 <div className="col-4 text-end">
@@ -38,7 +47,9 @@ export default function HomeView({ user, stadistics }) {
                     <p className="text-sm mb-0 text-capitalize font-weight-bold">
                       Profesiones
                     </p>
-                    <h5 className="font-weight-bolder mb-0">{stadistics.professions}</h5>
+                    <h5 className="font-weight-bolder mb-0">
+                      {stadistics.professions}
+                    </h5>
                   </div>
                 </div>
                 <div className="col-4 text-end">
@@ -62,7 +73,9 @@ export default function HomeView({ user, stadistics }) {
                     <p className="text-sm mb-0 text-capitalize font-weight-bold">
                       Especilidades
                     </p>
-                    <h5 className="font-weight-bolder mb-0">{stadistics.specialties}</h5>
+                    <h5 className="font-weight-bolder mb-0">
+                      {stadistics.specialties}
+                    </h5>
                   </div>
                 </div>
                 <div className="col-4 text-end">
@@ -86,7 +99,7 @@ export default function HomeView({ user, stadistics }) {
                     <p className="text-sm mb-0 text-capitalize font-weight-bold">
                       Turnos del mes
                     </p>
-                    <h5 className="font-weight-bolder mb-0">0</h5>
+                    <h5 className="font-weight-bolder mb-0">76</h5>
                   </div>
                 </div>
                 <div className="col-4 text-end">
@@ -107,7 +120,7 @@ export default function HomeView({ user, stadistics }) {
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
-                <div class="col-lg-6" style={{height:"100%"}}>
+                <div class="col-lg-6" style={{ height: "100%" }}>
                   <div class="d-flex flex-column h-100">
                     <p class="mb-1 pt-2 text-bold">
                       {user.employee.specialty.profession.name}{" "}
@@ -126,7 +139,10 @@ export default function HomeView({ user, stadistics }) {
                     </a> */}
                   </div>
                 </div>
-                <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0" style={{height:"100%"}}>
+                <div
+                  class="col-lg-5 ms-auto text-center mt-5 mt-lg-0"
+                  style={{ height: "100%" }}
+                >
                   {/* <div class=" border-radius-lg w-80 h-80"> */}
                   {/* <img
                       src={`${
@@ -137,7 +153,10 @@ export default function HomeView({ user, stadistics }) {
                       class="position-absolute h-100 w-50 top-0 d-lg-block d-none"
                       alt="waves"
                     /> */}
-                  <div class="position-relative d-flex align-items-center justify-content-center" style={{height:"100%"}}>
+                  <div
+                    class="position-relative d-flex align-items-center justify-content-center"
+                    style={{ height: "100%" }}
+                  >
                     <img
                       class="h-80 w-80 position-relative z-index-2"
                       style={{ borderRadius: 10 }}
@@ -180,6 +199,17 @@ export default function HomeView({ user, stadistics }) {
             </div>
           </div>
         </div>
+      </div>
+      <div class="row mt-4">
+        <DataTableHomeView
+          title="Turnos de la semana"
+          data={users}
+          headCells={headCells}
+          setItem={()=>null}
+          changeFilter={[]}
+          changeState={[]}
+          // week="Semana 1"
+        />
       </div>
     </>
   );

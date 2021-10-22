@@ -8,7 +8,7 @@ export default function DataTableView({
   btnAddTitle,
   changeFilter,
   changeState,
-  title
+  title,
 }) {
   console.log(data, "# dfdf");
   return (
@@ -44,13 +44,11 @@ export default function DataTableView({
                 <tbody>
                   {data.map((d) => (
                     <tr>
-                      <td>
+                      <td className="align-middle text-center text-sm">
                         <p>{d.name}</p>
                       </td>
-                      <td></td>
-                      <td></td>
                       {d.profession && (
-                        <td>
+                        <td className="align-middle text-center text-sm">
                           <p>{d.profession.name}</p>
                         </td>
                       )}
@@ -60,22 +58,21 @@ export default function DataTableView({
                           type="button"
                           onClick={() => changeState(d)}
                           className="btn"
-                        // disabled
+                          // disabled
                         >
                           <span
-                            className={`badge badge-sm ${d.state
-                              ? "bg-gradient-success"
-                              : "bg-gradient-danger"
-                              }`}
+                            className={`badge badge-sm ${
+                              d.state
+                                ? "bg-gradient-success"
+                                : "bg-gradient-danger"
+                            }`}
                             onClick={() => setItem(d)}
                           >
                             {d.state ? "Activo" : "Desactivo"}
                           </span>
                         </button>
                       </td>
-                      <td></td>
-                      <td></td>
-                      <td className="align-middle">
+                      <td className="align-middle text-center">
                         <button
                           type="button"
                           onClick={() => setItem(d)}
@@ -85,7 +82,7 @@ export default function DataTableView({
                         >
                           <i
                             className="fas fa-edit"
-                          // style={{ fontSize: 18 }}
+                            // style={{ fontSize: 18 }}
                           ></i>
                         </button>
                       </td>
