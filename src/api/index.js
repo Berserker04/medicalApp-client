@@ -4,7 +4,9 @@ import axios from "axios";
 // const URL_API = "https://mercadeo-virtual-api.herokuapp.com";
 
 // DEVELOP
-const URL_API = "http://127.0.0.1:8000/api";
+const URL_API = "http://localhost:8000/api";
+
+const URL_IMAGE = "http://localhost:8000/storage/uploads/images/";
 
 class AP {
   async GET(link, data = {}, config = {}) {
@@ -43,14 +45,12 @@ class AP {
   }
 
   async DEL(link, config = {}) {
-    return await axios
-      .delete(`${URL_API}${link}`, config)
-      .then((resp) => {
-        return resp;
-      });
+    return await axios.delete(`${URL_API}${link}`, config).then((resp) => {
+      return resp;
+    });
   }
 }
 
 const API = new AP();
 
-export { API, URL_API };
+export { API, URL_API, URL_IMAGE };

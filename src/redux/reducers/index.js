@@ -1,8 +1,12 @@
-import { combineReducers } from 'redux';
-import usersReducer from './users';
-import serviceReducer from './services';
+import { combineReducers } from "redux";
+import user from "./users";
+import authReducer from "./auth";
+import professionReducer from "./prefession";
+import specialty from "./specialty";
 
 export default combineReducers({
-    usersReducer,
-    serviceReducer
+  user,
+  authReducer,
+  profession: professionReducer,
+  specialty,
 });
